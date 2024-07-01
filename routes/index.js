@@ -68,14 +68,17 @@ router.get("/login", function (req, res, next) {
   res.render("login", { error: req.flash("error") });
 });
 
-router.get("/feed",  isLoggedIn, async function (req, res, next) {
+router.get('/feed', isLoggedIn, async function(req, res, next){
   const found_user = await users.findOne({
     username: req.session.passport.user,
-  })
-  const found_post = await posts.find()
-  .populate("user");
-  res.render("feed",{found_user, found_post});
-});
+  });
+  
+  const found_posts = await posts.find()
+  .populate("users");
+  console.log(found_posts);
+
+  res.render('feed', { found_user ,found_posts});
+})
 
 router.post("/register", function (req, res, next) {
   const { username, email } = req.body;
@@ -87,9 +90,7 @@ router.post("/register", function (req, res, next) {
   });
 });
 
-router.post(
-  "/login",
-  passport.authenticate("local", {
+router.post("/login", passport.authenticate("local", {
     successRedirect: "/profile",
     failureRedirect: "/login",
     failureFlash: true,

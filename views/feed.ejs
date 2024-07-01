@@ -1,21 +1,25 @@
 <% include ./partials/header.ejs %>
     <% include ./navigation-bar %>
 
-        <div class="container mx-auto p-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <% found_post.forEach(function(elem){ %>
-                    <div class="box">
-                        <img src="/images/uploads/<%= elem.image %>" alt="image"
-                            class="w-full h-auto">
-                    
-                    <div class="caption p-2 text-center  shadow-md"><%= elem.title %></div>
-                    <div class="caption p-2 text-center  shadow-md"><%= elem.description %></div>
+    <div class="container mx-auto py-8">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Feed</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <% found_posts.forEach(function(post) { %>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-fit">
+              <div class="flex-shrink-0">
+                <img class="w-full object-cover" src="/images/uploads/<%= post.image %>" alt="Post Image">
+              </div>
+              <div class="p-6  h-fit">
+                <div class="flex items-center space-x-4 mb-4">
+                  
                 </div>
-
-               <% }) %>
-                
+                <h3 class="text-lg font-semibold text-gray-800"><%= post.title %></h3>
+                <p class="text-gray-600 mt-2"><%= post.description %></p>
+              </div>
             </div>
+          <% }); %>
         </div>
+      </div>
 
 
 
