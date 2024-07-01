@@ -12,12 +12,10 @@ const postSchema = new mongoose.Schema({
   description:{
     type: String,
   },
-  users: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
     required: true,
-    
-    
   },
   createdAt: {
     type: Date,
@@ -32,4 +30,4 @@ const postSchema = new mongoose.Schema({
 // Create the Post model
 
 
-module.exports =  mongoose.model("post", postSchema);
+module.exports =  mongoose.model("Post", postSchema);

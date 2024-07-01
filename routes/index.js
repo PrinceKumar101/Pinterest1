@@ -73,8 +73,7 @@ router.get('/feed', isLoggedIn, async function(req, res, next){
     username: req.session.passport.user,
   });
   
-  const found_posts = await posts.find()
-  .populate("users");
+  const found_posts = await posts.find();
   console.log(found_posts);
 
   res.render('feed', { found_user ,found_posts});
