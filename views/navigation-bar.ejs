@@ -1,0 +1,35 @@
+<% include ./partials/header.ejs %>
+
+<div class="nav bg-white shadow-lg p-4 bg-gradient-to-b from-slate-200 to-zinc-100">
+  <nav class="container mx-auto flex flex-wrap justify-between items-center ">
+      <div class="font-bold text-4xl text-rose-600">
+          <a href="#">Pinterest</a>
+      </div>
+      <div class="hidden md:flex gap-6 text-black-300  text-xl">
+          <a href="/profile" class="hover:underline">Profile</a>
+          <a href="/feed" class="hover:underline">Feed</a>
+          <a href="/logout" class="bg-slate-900 text-white py-1 px-4 rounded hover:bg-slate-800">Logout</a>
+      </div>
+      <div class="md:hidden">
+          <button id="menu-button" class="text-slate-900 focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+          </button>
+      </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+      <a href="/profile" class="block py-2 text-slate-900 hover:underline">Profile</a>
+      <a href="/feed" class="block py-2 text-slate-900 hover:underline">Feed</a>
+      <a href="/logout" class="block py-2 bg-slate-900 text-white rounded text-center hover:bg-slate-800">Logout</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menu-button').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+</script>
+
+<% include ./partials/footer.ejs %>

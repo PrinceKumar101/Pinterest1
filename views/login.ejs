@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <style>
+      .error{
+        color:red;
+        font-weight: 500;
+        text-transform: capitalize;
+        margin: 7px 0px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <form action="/login" method="post" class="container">
+      <div class="content" style="padding-top: 20%">
+        <!--pinterest logo-->
+        <img
+          src="https://i.pinimg.com/originals/d3/d1/75/d3d175e560ae133f1ed5cd4ec173751a.png"
+          alt="pin logo"
+          class="img1"
+        />
+        <p class="header">Log in to see more</p>
+
+        <% if(error.length > 0) { %>
+          <p class="error"> <%= error %> </p>
+        <% } %>
+
+        <input
+          type="username"
+          name="username"
+          placeholder="UserName"
+          class="detail"
+        /><br />
+        <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          class="detail"
+        />
+        <br />
+        <br />
+
+        <input type="submit" class="btn int" value="Log into your Account" />
+
+        <br />
+        <footer>
+          <p>
+            By continuing, you agree to Pinterest's
+            <b>Terms of Service, Privacy policy.</b>
+          </p>
+          <br />
+          <hr />
+          <br />
+          <a href="/" style="padding: 30px; text-decoration: none; color: black"
+            >Not on Pinterest yet? Sign up</a
+          >
+        </footer>
+      </div>
+    </form>
+  </body>
+</html>

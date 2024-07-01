@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="nav">
+      <% include ./navigation-bar %>
+    </div>
+    <div>
+      <div>
+        <form
+          id="prof-upl-form"
+          action="/upl-profile"
+          hidden
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input type="file" name="upl-img" />
+        </form>
+      </div>
+
+      <div class="container">
+        <div class="card">
+          <div class="container mx-auto">
+            <div class="profile-picture relative w-64 h-64">
+              <img
+                class="w-full h-full object-cover"
+                src="/images/uploads/<%= found_user.profilePicture %>"
+                alt="Profile Picture"
+              />
+              <span
+                id="uploadicon"
+                class="absolute bottom-7 right-8 h-10 w-10 flex justify-center items-center bg-zinc-200 rounded-full"
+                ><i class="ri-pencil-fill"></i
+              ></span>
+            </div>
+          </div>
+          <h2 class="name"><%= found_user.username %></h2>
+          <h3 class="username"><%= found_user.email %></h3>
+          <p class="tagline">Some taglines here</p>
+          <div class="cont">
+            <p class="description"><%= found_user.bio %></p>
+            <a href="#" class="button">Eit Profile </a>
+            <a href="/logout" class="button">Log-Out</a>
+            <div class=" p-5"><a href="/new-post" class="button">Add New Post</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card-t  flex flex-wrap gap-10 px-10 mt-10 justify-around"
+      >
+      <a href="/show/posts">
+        <div class="card-b">
+          <div class="w-52 h-40 bg-zinc-700 rounded-lg ">
+            <img class="w-full h-full rounded-lg" src="/images/uploads/<%= found_user?.posts[0]?.image %>" alt="">
+          </div>
+          <h3 class="text-xl font-semibold mt-5">Uploaded Pins</h3>
+          <h5 class="text-sm font-medium"><%= found_user.posts.length  %>  Pins</h5>
+        </div></a>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelector("#uploadicon")
+        .addEventListener("click", function () {
+          document.querySelector("#prof-upl-form input").click();
+        });
+      document
+        .querySelector("#prof-upl-form input")
+        .addEventListener("change", function () {
+          document.querySelector("#prof-upl-form").submit();
+        });
+    </script>
+  </body>
+</html>
