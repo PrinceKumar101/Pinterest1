@@ -1,0 +1,1 @@
+This is a clone of pinterest website with modification of my own..
