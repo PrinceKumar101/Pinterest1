@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://Prince:Prince12@cluster0.qgc83ok.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect(process.env.MONGODB_URL);
 const schema = mongoose.Schema;
 const plm = require("passport-local-mongoose");
 
